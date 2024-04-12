@@ -1,8 +1,7 @@
-package ru.netology.rest;
-
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 public class JsonTest {
     @Test
@@ -17,6 +16,7 @@ public class JsonTest {
                 .post("/post")
 // Проверки
                 .then()
-                .statusCode(200);
-        //.body(/* --> ваша проверка здесь <-- */);
-    }}
+                .statusCode(200)
+                .body("data", equalTo("some data"));
+    }
+}
